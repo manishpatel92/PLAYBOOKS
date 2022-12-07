@@ -1,0 +1,26 @@
+---
+
+- name: create users and create files/dri in users home dri
+  hosts: all
+  tasks:
+          - name: create multiple users
+            user:
+                    name: "{{item.a}}"
+                    password: "{{item.b}}"
+                    home: "{{item.c}}"
+            with_items:
+                    - {a: farhan,b: manish,c: /home/farhan}
+                    - {a: ravi,b: manish,c: /home/ubuntu/ravi}
+          
+                    
+          - name: creating files and directories in users home dri
+            file:
+                    name: "{{item.a}}"
+                    state: "{{item.b}}"
+            with_items:
+                    - {a: /home/farhan/file20,b: touch}
+                    - {a: /home/ubuntu/ravi/dir20,b: directory}
+
+...
+
+            

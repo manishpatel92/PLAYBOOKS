@@ -1,0 +1,19 @@
+---
+
+- name: install software packages
+  hosts: webserver
+  tasks:
+          - name: install software
+            apt:
+                    name: "{{item}}"
+                    state: present
+                    update_cache: no
+            with_items:
+                    - tree
+                    - git
+                    - default-jdk
+                    - apache2
+
+
+...
+

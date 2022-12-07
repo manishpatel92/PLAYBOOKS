@@ -1,0 +1,16 @@
+---
+
+- name: Install git and clone a remote repository
+  hosts: all
+  tasks:
+          - name: Install git
+            apt:
+                    name: git
+                    state: present
+                    update_cache: yes
+   
+          - name: clone remote git repositoryi
+            git:
+                    repo: https://github.com/sunilkumark11/git-9am-batch.git
+                    dest: /home/ubuntu/newgit 
+...

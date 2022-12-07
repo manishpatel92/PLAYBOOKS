@@ -1,0 +1,35 @@
+---
+
+- name: configure apache2
+  hosts: all
+  tasks:
+          - name: install apache2
+            apt:
+                    name: apache2
+                    state: present
+                    update_cache: yes
+          - name: edit index.html file
+            copy:
+                    content: "welcome to manish playbooks"
+                    dest: /var/www/html/index.html
+          - name: restart the apache2
+            service:
+                    name: apache2
+                    state: restarted
+          - name: check url response of server 1
+            uri:
+                    url: http://172.31.9.38
+                     
+                   
+          - name: check url response of server 2
+            uri:
+                    url: http://172.31.0.248
+                    
+                   
+          - name: check url response of server 3
+            uri:
+                    url: http://172.31.2.208
+                     
+                    
+
+...

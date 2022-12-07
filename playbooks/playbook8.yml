@@ -1,0 +1,11 @@
+---
+- name: use host scope variable
+  hosts: 172.31.2.208
+  tasks:
+          - name: install firewall
+            apt:
+                    name: "{{a}}"
+                    state: "{{b}}"
+                    update_cache: "{{c}}"
+
+...
